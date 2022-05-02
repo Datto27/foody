@@ -4,13 +4,15 @@
 
 
 export const colors = {
+  mainColor: "#ff8c52",
   buttons: "#ff8c52",
   grey1: "#43484d",
   grey2: "#5e6977",
   grey3: "#869393",
-  grey4: "#bdc6cf",
+  grey4: "#cccccc",
+  grey5: "#e8e8e8",
   cardComment: "#869339e",
-  cardBackground: "white"
+  cardBackground: "white",
 }
 
 export const parameters = {
@@ -34,5 +36,6 @@ export const parameters = {
     color: "orange",
     fontSize: 16,
     fontWeight: "bold"
-  }
+  },
+  
 }

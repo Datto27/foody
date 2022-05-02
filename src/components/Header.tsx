@@ -3,8 +3,10 @@ import React from 'react'
 // libraries
 import Icon from 'react-native-vector-icons/AntDesign'
 import { useNavigation } from '@react-navigation/native'
-import { AuthStackParamList } from '../routes/AuthNavigation'
 import { StackNavigationProp } from '@react-navigation/stack'
+// components
+import { AuthStackParamList } from '../routes/AuthNavigator'
+
 
 type HeaderProps = {
   title: string,

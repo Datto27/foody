@@ -2,14 +2,21 @@ import { StyleSheet, Text, TextInput, View, Platform } from 'react-native'
 import React, { useRef, useState, useEffect } from 'react'
 // libraries
 import Entypo from 'react-native-vector-icons/Entypo'
+import { useNavigation } from '@react-navigation/native'
+import { Button, SocialIcon } from 'react-native-elements'
+import { StackNavigationProp } from '@react-navigation/stack'
 // components
 import Header from '../../components/Header'
 import { colors, parameters } from '../../global/styles'
-import { Button, SocialIcon } from 'react-native-elements'
+import { AuthStackParamList } from '../../routes/AuthNavigator'
 
+
+type Nav = StackNavigationProp<AuthStackParamList>
 
 const SignInScreen = () => {
-  const [showPassword, setShowPassword] = useState(false)
+  const navigation = useNavigation<Nav>()
+  // states
+  const [showPassword, setShowPassword] = useState(false) // for password input
   const lockRef = useRef<any>(null)
 
 
@@ -55,6 +62,7 @@ const SignInScreen = () => {
           <Button title="SIGN IN" 
             buttonStyle={parameters.styledButton} 
             titleStyle={styles.buttonTitle}  
+            onPress={() => navigation.navigate("Home")}
           />
         </View>
         <View style={{alignItems: "center", marginVertical:15}}>
@@ -80,7 +88,6 @@ const SignInScreen = () => {
           type='google'
           style={styles.socialIcon}
           onPress={() => {
-
           }}
         />
       </View>
