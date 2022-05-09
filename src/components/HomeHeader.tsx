@@ -5,6 +5,7 @@ import EvilIcons from "react-native-vector-icons/EvilIcons"
 import { Badge } from 'react-native-elements'
 import { colors, parameters } from '../global/styles'
 
+// this component is used for home pages, like HomeScreen....
 const HomeHeader = () => {
 
   return (
