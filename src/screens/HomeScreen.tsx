@@ -1,11 +1,15 @@
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput, Platform, FlatList, Image, Pressable } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput, Platform, FlatList, Image, Pressable, Dimensions } from 'react-native'
 import React, { useState } from 'react'
 import Ionicons from "react-native-vector-icons/Ionicons"
-// components
+import CountDown from "react-native-countdown-component"
+// local components
 import HomeHeader from '../components/HomeHeader'
 import { colors } from '../global/styles'
-import { filterData } from '../global/data'
+import { filterData, restaurantsData } from '../global/data'
+import FoodCard from '../components/FoodCard'
 
+
+const SCREEN_WIDTH = Dimensions.get("window").width
 
 const HomeScreen = () => {
   const [delivery, setDelivery] = useState(true)
@@ -21,8 +25,7 @@ const HomeScreen = () => {
             <View style={[
                 styles.btn, 
                 {backgroundColor:delivery?colors.mainColor:"white"}
-              ]}
-            >
+            ]}>
               <Text>Delivery</Text>
             </View>
           </TouchableOpacity>
@@ -30,8 +33,7 @@ const HomeScreen = () => {
             <View style={[
                 styles.btn, 
                 {backgroundColor:delivery?"white":colors.mainColor}
-              ]}
-            >
+            ]}>
               <Text>Pick-up</Text>
             </View>
           </TouchableOpacity>
@@ -50,8 +52,7 @@ const HomeScreen = () => {
         <View style={styles.categoriesSection}>
           <Text style={styles.headerText}>Categories</Text>
           <View style={styles.categories}>
-            <FlatList
-              horizontal
+            <FlatList horizontal
               showsHorizontalScrollIndicator={false}
               data={filterData}
               extraData={checkedIndex}
@@ -63,7 +64,9 @@ const HomeScreen = () => {
                     <Image style={styles.categoryImg}
                       source={item.image}
                     />
-                    <Text style={styles.categoryTxt}>{item.name}</Text>
+                    <Text style={{color: item.id===checkedIndex ? "white":"black"}}>
+                      {item.name}
+                    </Text>
                   </View>
                 </TouchableOpacity>
               }}
@@ -71,7 +74,60 @@ const HomeScreen = () => {
           </View>
         </View>
         {/* ------------- free delivery now section -------------- */}
-        
+        <View style={styles.categoriesSection}>
+          <Text style={styles.headerText}>Free Delivery now</Text>
+          <View style={styles.countdownContainer}>
+            <Text style={{fontSize:16, paddingBottom:10, fontWeight:"500"}}>
+              Options changing in
+            </Text>
+            <CountDown
+              until={3600}
+              size={14}
+              digitStyle={{backgroundColor:"limegreen"}}
+              digitTxtStyle={{color:colors.grey1}}
+              timeToShow={["M", "S"]}
+              timeLabels={{m:"Min", s:"Sec"}}
+            />
+          </View>
+          <FlatList horizontal
+            showsHorizontalScrollIndicator={false}
+            data={restaurantsData}
+            renderItem={({item}) => {
+              return <FoodCard 
+                restaurantName={item.restaurantName} 
+                images={item.images}
+                avarageReview={item.averageReview}
+                businessAddress={item.businessAddress}
+                discountPercent={item.discount}
+                farAway={item.farAway}
+                numberOfReview={item.numberOfReview}
+                screenWidth={SCREEN_WIDTH*0.8}
+                onFoodCardPress={()=>{}}
+              />
+            }}
+          />
+        </View>
+        {/* ---------- restaurants in your area ------------ */}
+        <View style={styles.categoriesSection}>
+          <Text style={styles.headerText}>Restaurants in your area</Text>
+          <FlatList
+            showsHorizontalScrollIndicator={false}
+            data={restaurantsData}
+            renderItem={({item}) => {
+              return <FoodCard 
+                restaurantName={item.restaurantName} 
+                images={item.images}
+                avarageReview={item.averageReview}
+                businessAddress={item.businessAddress}
+                discountPercent={item.discount}
+                farAway={item.farAway}
+                numberOfReview={item.numberOfReview}
+                screenWidth={SCREEN_WIDTH}
+                onFoodCardPress={()=>{}}
+              />
+            }}
+          />
+        </View>
       </ScrollView>
     </View>
   )
@@ -98,6 +154,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 10,
+    marginBottom: 10,
   },
   inputContainer: {
     flex: 1,
@@ -114,18 +171,19 @@ const styles = StyleSheet.create({
     outlineStyle: Platform.OS === "web" && "none",
   },
   categoriesSection: {
-    paddingHorizontal: 5,
-  },
-  categories: {
-    backgroundColor: colors.grey4,
-    paddingHorizontal: 3,
-    paddingVertical: 4,
+    // paddingHorizontal: 5,
   },
   headerText: {
     fontSize: 22,
     fontWeight: "500",
     color: colors.grey2,
-    marginVertical: 10,
+    backgroundColor: colors.grey4,
+    padding: 3,
+    marginTop: 5,
+  },
+  categories: {
+    paddingHorizontal: 3,
+    paddingVertical: 4,
   },
   category: {
     alignItems: "center",
@@ -133,7 +191,7 @@ const styles = StyleSheet.create({
     width: 65,
     margin: 3,
     paddingVertical: 10,
-    backgroundColor: colors.grey2,
+    backgroundColor: colors.grey4,
     borderRadius: 18,
   },
   selectedCategory: {
@@ -150,8 +208,11 @@ const styles = StyleSheet.create({
     width: 54,
     borderRadius: 10,    
   },
-  categoryTxt: {
-    color: "white",
-    fontWeight: "400",
+  countdownContainer: {
+    flexDirection:"row", 
+    alignItems:"center", 
+    justifyContent:"flex-start",
+    marginTop: 10,
+    marginHorizontal: 5,
   }
 })
