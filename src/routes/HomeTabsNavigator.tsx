@@ -6,10 +6,14 @@ import { colors } from '../global/styles'
 import SearchScreen from '../screens/SearchScreen'
 import MyOrdersScreen from '../screens/MyOrdersScreen'
 import MyAccountScreen from '../screens/MyAccountScreen'
+import RestaurantsMapScreen from '../screens/RestaurantsMapScreen'
+import HomeStack from './HomeStackNavigator'
 
 
 const TabNav = createBottomTabNavigator()
 
+// this is navigator is for display home tabs screens
+// used inside DrawerNavigator.tsx
 const HomeTabs = () => {
   return (
     <TabNav.Navigator
@@ -18,8 +22,8 @@ const HomeTabs = () => {
       }}
     >
       <TabNav.Screen 
-        name='Home' 
-        component={HomeScreen}
+        name='HomeStack' 
+        component={HomeStack}
         options={{
           tabBarLabel: "Home",
           headerShown: false,

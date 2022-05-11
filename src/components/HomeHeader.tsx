@@ -1,16 +1,25 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 // libreries
 import EvilIcons from "react-native-vector-icons/EvilIcons"
 import { Badge } from 'react-native-elements'
+import { DrawerNavigationProp } from '@react-navigation/drawer'
+import { useNavigation } from '@react-navigation/native'
 import { colors, parameters } from '../global/styles'
+import { HomeDrawerParamList } from '../routes/DrawerNavigator'
+
+
+type Nav = DrawerNavigationProp<HomeDrawerParamList>
 
 // this component is used for home pages, like HomeScreen....
 const HomeHeader = () => {
+  const navigation = useNavigation<Nav>()
 
   return (
     <View style={styles.header}>
-      <EvilIcons name='navicon' size={34} color="white" />
+      <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+        <EvilIcons name='navicon' size={34} color="white" />
+      </TouchableOpacity>
       <Text style={styles.headerTitle}>Foody</Text>
       <View>
         <EvilIcons name='cart' size={34} color="white" />

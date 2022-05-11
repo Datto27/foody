@@ -2,16 +2,23 @@ import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput, Platfo
 import React, { useState } from 'react'
 import Ionicons from "react-native-vector-icons/Ionicons"
 import CountDown from "react-native-countdown-component"
+import { useNavigation } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
 // local components
 import HomeHeader from '../components/HomeHeader'
 import { colors } from '../global/styles'
 import { filterData, restaurantsData } from '../global/data'
 import FoodCard from '../components/FoodCard'
+import { HomeStackParamList } from '../routes/HomeStackNavigator'
 
 
 const SCREEN_WIDTH = Dimensions.get("window").width
 
+type Nav = StackNavigationProp<HomeStackParamList>
+
 const HomeScreen = () => {
+  const navigation = useNavigation<Nav>()
+  // local states
   const [delivery, setDelivery] = useState(true)
   const [checkedIndex, setCheckedIndex] = useState(1)
 
@@ -101,7 +108,7 @@ const HomeScreen = () => {
                 discountPercent={item.discount}
                 farAway={item.farAway}
                 numberOfReview={item.numberOfReview}
-                screenWidth={SCREEN_WIDTH*0.8}
+                screenWidth={SCREEN_WIDTH*0.9}
                 onFoodCardPress={()=>{}}
               />
             }}
@@ -129,6 +136,14 @@ const HomeScreen = () => {
           />
         </View>
       </ScrollView>
+      {delivery && (
+        <TouchableOpacity style={styles.floatButton}
+          onPress={() => navigation.navigate("RestaurantsMap")}
+        >
+          <Ionicons name='location' size={32} color={colors.mainColor} />
+          <Text style={{color:colors.mainColor}}>Map</Text>
+        </TouchableOpacity>
+      )}
     </View>
   )
 }
@@ -137,7 +152,7 @@ export default HomeScreen
 
 const styles = StyleSheet.create({
   container: {
-
+    flex: 1,
   },
   contentControll: {
     flexDirection: "row",
@@ -187,26 +202,26 @@ const styles = StyleSheet.create({
   },
   category: {
     alignItems: "center",
-    height: 85,
-    width: 65,
+    height: 95,
+    width: 75,
     margin: 3,
-    paddingVertical: 10,
+    paddingVertical: 8,
     backgroundColor: colors.grey4,
     borderRadius: 18,
   },
   selectedCategory: {
     alignItems: "center",
-    height: 85,
-    width: 65,
-    paddingVertical: 10,
+    height: 95,
+    width: 75,
+    paddingVertical: 8,
     margin: 3,
     backgroundColor: colors.mainColor,
     borderRadius: 15,
   },
   categoryImg: {
-    height: 50,
-    width: 54,
-    borderRadius: 10,    
+    height: 65,
+    width: 67,
+    borderRadius: 20,    
   },
   countdownContainer: {
     flexDirection:"row", 
@@ -214,5 +229,20 @@ const styles = StyleSheet.create({
     justifyContent:"flex-start",
     marginTop: 10,
     marginHorizontal: 5,
+  },
+  floatButton: {
+    alignItems: "center",
+    position: "absolute",
+    right: 30,
+    bottom: 10,
+    height: 60,
+    width: 60,
+    backgroundColor: "white",
+    borderRadius: 50,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1, 
   }
 })

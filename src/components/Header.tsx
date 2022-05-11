@@ -14,6 +14,7 @@ type HeaderProps = {
 }
 type Nav = StackNavigationProp<AuthStackParamList>
 
+// auth screens header
 const Header = ({title, type}:HeaderProps) => {
   const navigation = useNavigation<Nav>()
 
