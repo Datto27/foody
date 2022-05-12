@@ -11,6 +11,7 @@ export const colors = {
   grey3: "#869393",
   grey4: "#cccccc",
   grey5: "#e8e8e8",
+  transparentBlack: "rgba(0,0,0,0.35)",
   cardComment: "#869339e",
   cardBackground: "white",
 }

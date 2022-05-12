@@ -37,6 +37,59 @@ export const filterData = [
   }
 ]
 
+export const filterData2 = [
+  {
+    name:"Fast food",
+    image:"https://images.pexels.com/photos/2725744/pexels-photo-2725744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 
+    id:"0"
+  },
+  {
+    name:"Burgers",
+    image:"https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    id:"1"
+  },
+  {
+    name:"Salads",
+    image:"https://images.pexels.com/photos/1059905/pexels-photo-1059905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    id:"2"
+  },
+  {
+    name:"Hotdog",
+    image:"https://images.pexels.com/photos/3023479/pexels-photo-3023479.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    id:"3"
+  },
+  {
+    name:"Chinese",
+    image:"https://images.pexels.com/photos/688803/pexels-photo-688803.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    id:"4"
+  },
+  {
+    name:"Mexican",
+    image:"https://images.pexels.com/photos/2092507/pexels-photo-2092507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    id:"5"
+  },  
+  {
+    name:"Sea food",
+    image: "https://images.pexels.com/photos/566345/pexels-photo-566345.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    id:"6"
+  },
+  {
+    name:"Japanese Food",
+    image:"https://images.pexels.com/photos/884600/pexels-photo-884600.jpeg?auto=compress&cs=tinysrgb&w=600",
+    id:"7"
+  },
+  {
+    name:"Dessert",
+    image:"https://images.pexels.com/photos/3026804/pexels-photo-3026804.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    id:"8"
+  },  
+  {
+    name:"Georgian food",
+    image:"https://images.pexels.com/photos/6322053/pexels-photo-6322053.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    id:"9"
+  },
+];
+
 export const restaurantsData = [
   {restaurantName:"Mc Donalds", farAway:"21.2",
   businessAddress:"22 Bessie street, Cape Town",images:'https://bukasapics.s3.us-east-2.amazonaws.com/chicken.png',
@@ -75,3 +128,6 @@ export const restaurantsData = [
       ],
   id:3},
 ]
+
+
+

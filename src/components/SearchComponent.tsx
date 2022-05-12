@@ -1,8 +1,8 @@
-import { FlatList, Modal, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { FlatList, Modal, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Ionicons from "react-native-vector-icons/Ionicons"
+import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 import { colors } from '../global/styles'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import { filterData } from '../global/data'
 
 
@@ -12,8 +12,10 @@ const SearchComponent = () => {
   const [searchInput, setSearchInput] = useState("")
   const [data, setData] = useState(filterData) // changes on every search change
   const [filteredData, setFilteredData] = useState<any[]>([])  // this state is used for save filtered data from data state
+  const [textInputFocused, setTextInputFocused] = useState(true) //
 
   useEffect(() => {
+    // filter search data on every searchInput change
     const filtered = data.filter((item) => {
       return item.name.toLowerCase().includes(searchInput)
     }) 
@@ -22,29 +24,34 @@ const SearchComponent = () => {
   
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback style={styles.inputTouch}
-          onPress={() => setModalVisible(true)} >
-        <Ionicons name="search" size={22} />
-        <Text style={{fontSize:16, color:colors.grey2, margin:6}}>
-          What are you looking for?
-        </Text>
+      <TouchableWithoutFeedback onPress={() => setModalVisible(true)} >
+        <View style={styles.inputTouch}>
+          <Ionicons name="search" size={22} />
+          <Text style={{fontSize:16, color:colors.grey2, margin:6}}>
+            What are you looking for?
+          </Text>
+        </View>
       </TouchableWithoutFeedback>
       <Modal animationType='fade' transparent={false}
           visible={modalVisible}>
         <View style={styles.modal}>
           <View style={styles.inputContainer}>
-            <TouchableWithoutFeedback 
-                onPress={() => setModalVisible(false)} >
-              <Ionicons name='arrow-back' size={20} />
-            </TouchableWithoutFeedback>
+            {textInputFocused ? (
+              <Ionicons name='search' size={20} />
+            ):(
+              <Ionicons name='arrow-back' size={20}
+                onPress={() => setModalVisible(false)}
+              />
+            )}
             <TextInput style={styles.input}
               autoFocus placeholder='Search'
               value={searchInput}
               onChangeText={(val) => setSearchInput(val)}
+              onFocus={() => setTextInputFocused(true)}
+              onBlur={() => setTextInputFocused(false)}
             />
-            <TouchableOpacity style={{backgroundColor:colors.grey3, borderRadius:50}}
-                onPress={() => setSearchInput("")} >
-              <Ionicons name='close' size={18} color="white" />
+            <TouchableOpacity onPress={() => setSearchInput("")} >
+              <MaterialIcons name='cancel' size={22} color={colors.grey1} />
             </TouchableOpacity>
           </View>
           {/* {console.log} */}
@@ -66,12 +73,13 @@ export default SearchComponent
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    // flex: 1
   },
   inputTouch: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: colors.grey5,
+    paddingVertical: 4,
     paddingHorizontal: 4,
     margin: 4,
     shadowColor: "black",
