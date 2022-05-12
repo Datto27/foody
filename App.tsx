@@ -5,6 +5,7 @@ import HomeHeader from './src/components/HomeHeader';
 // navigators
 import RootNavigator from './src/routes/RootNavigator';
 import HomeScreen from './src/screens/HomeScreen';
+import SearchScreen from './src/screens/SearchScreen';
 
 
 export default function App() {
@@ -12,8 +13,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <RootNavigator />
-      {/* <HomeScreen /> */}
+      {/* <RootNavigator /> */}
+      <SearchScreen />
     </View>
   );
 }
