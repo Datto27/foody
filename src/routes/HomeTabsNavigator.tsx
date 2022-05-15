@@ -8,6 +8,7 @@ import MyOrdersScreen from '../screens/MyOrdersScreen'
 import MyAccountScreen from '../screens/MyAccountScreen'
 import RestaurantsMapScreen from '../screens/RestaurantsMapScreen'
 import HomeStack from './HomeStackNavigator'
+import SearchStackNavigator from './SearchStackNavigator'
 
 
 const TabNav = createBottomTabNavigator()
@@ -38,7 +39,7 @@ const HomeTabs = () => {
       />
       <TabNav.Screen 
         name='Search' 
-        component={SearchScreen}
+        component={SearchStackNavigator}
         options={{
           tabBarLabel: "Search",
           headerShown: false,

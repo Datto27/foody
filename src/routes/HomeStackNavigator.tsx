@@ -12,7 +12,7 @@ export type HomeStackParamList = {
 const StackNav = createStackNavigator<HomeStackParamList>()
 
 // this navigator is used insde HomeTabs.tsx
-// this is created for navigate between Reastaurants and Home screens
+// this is created for navigate between ReastaurantsMap and Home screens
 const HomeStack = () => {
   return (
     <StackNav.Navigator>

@@ -1,12 +1,18 @@
 import { FlatList, ImageBackground, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React from 'react'
+import { StackNavigationProp } from '@react-navigation/stack'
 import Ionicons from "react-native-vector-icons/Ionicons"
+import { useNavigation } from '@react-navigation/native'
 import { colors } from '../global/styles'
 import SearchComponent from '../components/SearchComponent'
-import { filterData, filterData2 } from '../global/data'
+import { filterData2 } from '../global/data'
+import { SearchStackParamList } from '../routes/SearchStackNavigator'
 
+
+type Nav = StackNavigationProp<SearchStackParamList>
 
 const SearchScreen = () => {
+  const navigation = useNavigation<Nav|any>()
 
   return (
     <View style={styles.container}>
@@ -19,7 +25,11 @@ const SearchScreen = () => {
           data={filterData2}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({item}) => {
-            return <TouchableOpacity style={styles.categoryItem}>
+            return <TouchableOpacity style={styles.categoryItem}
+                onPress={() => navigation.navigate(
+                  "SearchResultScreen",
+                  {title: item.name}
+                )} >
               <ImageBackground source={{uri:item.image}}
                   resizeMode='cover' style={styles.bgImage} >
                 <View style={styles.textContainer}>

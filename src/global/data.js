@@ -59,8 +59,8 @@ export const filterData2 = [
     id:"3"
   },
   {
-    name:"Chinese",
-    image:"https://images.pexels.com/photos/688803/pexels-photo-688803.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    name:"Georgian food",
+    image:"https://images.pexels.com/photos/6322053/pexels-photo-6322053.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     id:"4"
   },
   {
@@ -79,15 +79,16 @@ export const filterData2 = [
     id:"7"
   },
   {
+    name:"Chinese",
+    image:"https://images.pexels.com/photos/688803/pexels-photo-688803.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    id:"8"
+  },
+  {
     name:"Dessert",
     image:"https://images.pexels.com/photos/3026804/pexels-photo-3026804.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    id:"8"
-  },  
-  {
-    name:"Georgian food",
-    image:"https://images.pexels.com/photos/6322053/pexels-photo-6322053.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     id:"9"
-  },
+  }, 
+
 ];
 
 export const restaurantsData = [

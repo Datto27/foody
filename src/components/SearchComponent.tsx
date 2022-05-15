@@ -4,10 +4,17 @@ import Ionicons from "react-native-vector-icons/Ionicons"
 import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 import { colors } from '../global/styles'
 import { filterData } from '../global/data'
+import { useNavigation } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
+import { SearchStackParamList } from '../routes/SearchStackNavigator'
 
+
+type Nav = StackNavigationProp<SearchStackParamList>
 
 // used inside SearchScreen, looks like typeahead
 const SearchComponent = () => {
+  const navigation = useNavigation<Nav>()
+  // local states
   const [modalVisible, setModalVisible] = useState(false)
   const [searchInput, setSearchInput] = useState("")
   const [data, setData] = useState(filterData) // changes on every search change
@@ -58,7 +65,7 @@ const SearchComponent = () => {
           <FlatList
             data={filteredData}
             renderItem={({item}) => {
-              return <TouchableOpacity>
+              return <TouchableOpacity onPress={() => {}}>
                 <Text style={styles.foundItem}>{item.name}</Text>
               </TouchableOpacity>
             }}
