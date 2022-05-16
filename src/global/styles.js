@@ -4,7 +4,8 @@
 
 
 export const colors = {
-  mainColor: "#ff8c52",
+  mainColor: "#e8c054",
+  mainDarker: "#d6ad3e",
   buttons: "#ff8c52",
   grey1: "#43484d",
   grey2: "#5e6977",

@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 // components
 import { AuthStackParamList } from '../routes/AuthNavigator'
+import { colors } from '../global/styles'
 
 
 type HeaderProps = {
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   header: {
     alignItems: "center",
     flexDirection: "row",
-    backgroundColor: "orange",
+    backgroundColor: colors.mainColor,
     height: 50,
     paddingHorizontal: 10,
   },

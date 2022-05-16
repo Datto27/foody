@@ -5,7 +5,7 @@ import Swiper from 'react-native-swiper/src'
 import { Button } from 'react-native-elements'
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native'
 // components
-import { parameters } from '../../global/styles'
+import { colors, parameters } from '../../global/styles'
 
 type Nav = {
   navigate: (value: string) => void;
@@ -46,7 +46,7 @@ const WelcomeScreen = () => {
       <View style={styles.btnsContainer}>
         <Button title="SIGN IN" 
           style={styles.btn}
-          buttonStyle={parameters.styledButton}
+          buttonStyle={styles.styledButton}
           titleStyle={styles.whiteTitle}
           onPress={() => {
             navigation.navigate("SignIn")
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 20,
     fontWeight: "500",
-    color: "orange",
+    color: colors.mainColor,
   },
   slide1: {
     backgroundColor: "red",
@@ -105,18 +105,22 @@ const styles = StyleSheet.create({
   btn: {
     marginVertical: 5,
   },
+  styledButton: {
+    backgroundColor: colors.mainColor,
+  },
   whiteTitle: {
     color: "white",
     fontWeight: "bold"
   },
   transparentBtn: {
+    color: colors.mainColor,
     backgroundColor: "white",
     borderWidth: 1,
-    borderColor: "orange",
+    borderColor: colors.mainColor,
     borderRadius: 10,
   },
   coloredTitle: {
-    color: "orange",
+    color: colors.mainColor,
     fontWeight: "bold",
   }
 })

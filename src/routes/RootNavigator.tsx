@@ -10,9 +10,8 @@ import DrawerNavigator from './DrawerNavigator'
 const RootNavigator = () => {
   return (
     <NavigationContainer>
-      {/* <AuthNavigation /> */}
-      {/* <HomeTabs /> */}
-      <DrawerNavigator />
+      <AuthNavigation />
+      {/* <DrawerNavigator /> */}
     </NavigationContainer>
   )
 }

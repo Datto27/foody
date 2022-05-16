@@ -13,7 +13,7 @@ type Nav = StackNavigationProp<SearchStackParamList>
 
 // used inside SearchScreen, looks like typeahead
 const SearchComponent = () => {
-  const navigation = useNavigation<Nav>()
+  const navigation = useNavigation<Nav|any>()
   // local states
   const [modalVisible, setModalVisible] = useState(false)
   const [searchInput, setSearchInput] = useState("")
@@ -39,6 +39,7 @@ const SearchComponent = () => {
           </Text>
         </View>
       </TouchableWithoutFeedback>
+      {/* ------------------ results modal ---------------- */}
       <Modal animationType='fade' transparent={false}
           visible={modalVisible}>
         <View style={styles.modal}>
@@ -61,11 +62,14 @@ const SearchComponent = () => {
               <MaterialIcons name='cancel' size={22} color={colors.grey1} />
             </TouchableOpacity>
           </View>
-          {/* {console.log} */}
+          {/* ----------------- search results ------------ */}
           <FlatList
             data={filteredData}
             renderItem={({item}) => {
-              return <TouchableOpacity onPress={() => {}}>
+              return <TouchableOpacity onPress={() => {
+                setModalVisible(false)
+                navigation.navigate("SearchResultScreen", {title: item.name})
+              }}>
                 <Text style={styles.foundItem}>{item.name}</Text>
               </TouchableOpacity>
             }}

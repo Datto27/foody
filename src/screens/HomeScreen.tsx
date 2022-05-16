@@ -33,7 +33,9 @@ const HomeScreen = () => {
                 styles.btn, 
                 {backgroundColor:delivery?colors.mainColor:"white"}
             ]}>
-              <Text>Delivery</Text>
+              <Text style={{color:delivery?"white":colors.mainDarker, fontWeight:"500"}}>
+                Delivery
+              </Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setDelivery(!delivery)}>
@@ -41,7 +43,9 @@ const HomeScreen = () => {
                 styles.btn, 
                 {backgroundColor:delivery?"white":colors.mainColor}
             ]}>
-              <Text>Pick-up</Text>
+              <Text style={{color:delivery?colors.mainDarker:"white", fontWeight:"500"}}>
+                Pick-up
+              </Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -71,7 +75,8 @@ const HomeScreen = () => {
                     <Image style={styles.categoryImg}
                       source={item.image}
                     />
-                    <Text style={{color: item.id===checkedIndex ? "white":"black"}}>
+                    <Text style={{color: item.id===checkedIndex ? "white":colors.mainDarker,
+                       fontWeight:"500", }}>
                       {item.name}
                     </Text>
                   </View>
@@ -206,8 +211,10 @@ const styles = StyleSheet.create({
     width: 75,
     margin: 3,
     paddingVertical: 8,
-    backgroundColor: colors.grey4,
     borderRadius: 18,
+    shadowColor: "black",
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
   },
   selectedCategory: {
     alignItems: "center",
@@ -221,7 +228,7 @@ const styles = StyleSheet.create({
   categoryImg: {
     height: 65,
     width: 67,
-    borderRadius: 20,    
+    borderRadius: 30,    
   },
   countdownContainer: {
     flexDirection:"row", 

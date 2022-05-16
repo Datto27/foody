@@ -60,7 +60,7 @@ const SignInScreen = () => {
         </View>
         <View style={{marginHorizontal: 20}}>
           <Button title="SIGN IN" 
-            buttonStyle={parameters.styledButton} 
+            buttonStyle={styles.styledButton} 
             titleStyle={styles.buttonTitle}  
             onPress={() => navigation.navigate("HomeDrawer")}
           />
@@ -98,7 +98,7 @@ const SignInScreen = () => {
         </Text>
         <Button
           title={"Create an account"}
-          buttonStyle={parameters.transparentButton}
+          buttonStyle={styles.transparentButton}
           titleStyle={styles.coloredTitle}
         />
       </View>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: "500",
-    color: "orange",
+    color: colors.mainColor,
     margin: 10,
   },
   info: {
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     outlineStyle: Platform.OS === "web" && "none",
   },
   styledButton: {
-    backgroundColor: "orange",
+    backgroundColor: colors.mainColor,
     borderRadius: 10,
   },
   buttonTitle: {
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   coloredTitle: {
-    color: "orange",
+    color: colors.mainColor,
     fontSize: 16,
     fontWeight: "bold"
   },
@@ -165,5 +165,11 @@ const styles = StyleSheet.create({
   createSection: {
     alignItems: "flex-end",
     padding: 10,
+  },
+  transparentButton: {
+    backgroundColor: "white",
+    borderWidth: 1,
+    borderColor: colors.mainColor,
+    borderRadius: 5,
   }
 })

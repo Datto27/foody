@@ -15,7 +15,7 @@ type Props = {
   bussinesAddress: string;
   farAway: string;
   avarageReview: number;
-  images: string[] | any;
+  image: string[] | any;
   productData: any;
 }
 
@@ -23,14 +23,14 @@ type Props = {
 const ResultCard = ({
   screenWidth, restaurantName, deliveryAvailable,
   discountAvailable, discountPercent, numberOfReview,
-  bussinesAddress, farAway, avarageReview, images, productData,
+  bussinesAddress, farAway, avarageReview, image, productData,
 }:Props) => {
   
   return (
     <View style={styles.container}>
       <View style={styles.card}>
         <ImageBackground style={{height:160}}
-          source={{uri:"https://images.pexels.com/photos/884600/pexels-photo-884600.jpeg?auto=compress&cs=tinysrgb&w=600"}} >
+          source={{uri:image}} >
           <View style={styles.viewsContainer}>
             <Text style={{fontSize:16, fontWeight:"600", color:"white"}}>
               {avarageReview}
@@ -53,11 +53,13 @@ const ResultCard = ({
       </View>
       <View style={styles.products}>
         <FlatList horizontal
+        showsHorizontalScrollIndicator={false}
           data={productData}
+          keyExtractor={(item, i) => i.toString()}
           renderItem={({item, index}) => {
             return <View key={index} style={styles.product}>
               <Image style={styles.image}
-                source={{uri: "https://images.pexels.com/photos/3026804/pexels-photo-3026804.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}}
+                source={{uri: image}}
               />
               <View style={{justifyContent:"space-between", padding:4,}}>
                 <Text style={styles.primaryText}>{item.name}</Text>
@@ -75,7 +77,8 @@ export default ResultCard
 
 const styles = StyleSheet.create({
   container: {
-
+    flex: 1,
+    marginBottom: 15,
   },
   card: {
     margin: 5,
