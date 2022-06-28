@@ -1,5 +1,5 @@
 # Start app
--- yarn add
+-- yarn install
 
 -- expo start
 
