@@ -9,6 +9,3 @@
 -- yarn add react-native-vector-icons
 
 -- yarn add react-native-safe-area-context
-
-# For small animations
--- yarn add react-native-animatable
